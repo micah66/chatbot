@@ -4,6 +4,7 @@ This is the template server side for ChatBot
 from bottle import route, run, template, static_file, request
 import json
 import random
+import requests
 
 animation_dict = {
     'afraid': {
@@ -85,18 +86,12 @@ def get_boto_response(animation):
     else:
         return 'I don\'t understand'
 
+
 def check_user_swear(user_message):
     for word in user_message.split(' '):
         if word in swear_words:
             return word
     return False
-
-
-def is_question(user_message):
-    if user_message[-1] == '?':
-        return True
-    else:
-        return False
 
 
 @route('/', method='GET')
