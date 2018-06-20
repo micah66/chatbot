@@ -102,7 +102,6 @@ def index():
 @route("/chat", method='POST')
 def chat():
     user_message = request.POST.get('msg')
-    is_question(user_message)
     animation = evaluate_user_input(user_message)
     if check_user_swear(user_message):
         boto_message = f'Excume me, but I\'m going to have to ask you not to say the word, {check_user_swear(user_message)}'
